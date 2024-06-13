@@ -40,7 +40,11 @@ namespace LegoMinifigureHub
                     int newMinifigurePrice = Int32.Parse(Console.ReadLine());
                     Console.WriteLine("Specify Condition:");
                     int newMinifigureCondition = Int32.Parse(Console.ReadLine());
-
+                    while(newMinifigureCondition < 0 || newMinifigureCondition > 10)
+                    {
+                        Console.WriteLine("Condition value must be in 0 to 10 range. Try again.");
+                        newMinifigureCondition = Int32.Parse(Console.ReadLine());
+                    }
                     minifigure.AddItem(newMinifigureId, newMinifigureName, newMinifigurePrice, newMinifigureCondition);
                     
                 }
