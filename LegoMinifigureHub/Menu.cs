@@ -41,16 +41,12 @@ namespace LegoMinifigureHub
                     Console.WriteLine("Specify Condition:");
                     int newMinifigureCondition = Int32.Parse(Console.ReadLine());
 
-                    
-                    minifigure.listOfMinifigures.Add(new Minifigure() { Id = newMinifigureId, Name = newMinifigureName, Price = newMinifigurePrice, Condition = newMinifigureCondition });
-
-                    Console.WriteLine("You have added new minifigure to your collection:");
-                    Console.WriteLine($"Id - {newMinifigureId}, Name - {newMinifigureName}, Price - {newMinifigurePrice}, Condition - {newMinifigureCondition}/10");
+                    minifigure.AddItem(newMinifigureId, newMinifigureName, newMinifigurePrice, newMinifigureCondition);
                     
                 }
                 else
                 {
-
+                    minifigure.RemoveItem();
                 }
             }
         }

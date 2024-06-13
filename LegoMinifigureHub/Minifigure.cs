@@ -19,5 +19,20 @@ namespace LegoMinifigureHub
         {
             listOfMinifigures = new List<Minifigure>();
         }
+
+        public void AddItem(int newMinifigureId, string newMinifigureName, int newMinifigurePrice, int newMinifigureCondition)
+        {
+
+
+            listOfMinifigures.Add(new Minifigure() { Id = newMinifigureId, Name = newMinifigureName, Price = newMinifigurePrice, Condition = newMinifigureCondition });
+
+            Console.WriteLine("You have added new minifigure to your collection:");
+            Console.WriteLine($"Id - {newMinifigureId}, Name - {newMinifigureName}, Price - {newMinifigurePrice}, Condition - {newMinifigureCondition}/10");
+        }
+
+        public void RemoveItem()
+        {
+
+        }
     }
 }
