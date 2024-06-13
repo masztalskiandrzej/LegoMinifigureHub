@@ -8,9 +8,16 @@ namespace LegoMinifigureHub
 {
     public class Minifigure
     {
-        public int id;
-        public string name;
-        public double price;
-        public int condition;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public int Condition { get; set; }
+
+        public List<Minifigure> listOfMinifigures;
+
+        public Minifigure() 
+        {
+            listOfMinifigures = new List<Minifigure>();
+        }
     }
 }
