@@ -27,31 +27,56 @@ namespace LegoMinifigureHub
                 Console.WriteLine("2. Remove minifigure");
 
                 int addOrRemoveChosen = Int32.Parse(Console.ReadLine());
-
-                if (addOrRemoveChosen == 1)
+                switch(addOrRemoveChosen)
                 {
-                    Console.WriteLine("Add new minifigure - specify Id, Name, Price and Condition(out of 10):");
 
-                    Console.WriteLine("Specify Id:");
-                    int newMinifigureId = Int32.Parse(Console.ReadLine());
-                    Console.WriteLine("Specify Name:");
-                    string newMinifigureName = Console.ReadLine();
-                    Console.WriteLine("Specify Price:");
-                    int newMinifigurePrice = Int32.Parse(Console.ReadLine());
-                    Console.WriteLine("Specify Condition:");
-                    int newMinifigureCondition = Int32.Parse(Console.ReadLine());
-                    while(newMinifigureCondition < 0 || newMinifigureCondition > 10)
-                    {
-                        Console.WriteLine("Condition value must be in 0 to 10 range. Try again.");
-                        newMinifigureCondition = Int32.Parse(Console.ReadLine());
-                    }
-                    minifigure.AddItem(newMinifigureId, newMinifigureName, newMinifigurePrice, newMinifigureCondition);
-                    
+                    case 1:
+
+                        Console.WriteLine("Add new minifigure - specify Id, Name, Price and Condition(out of 10):");
+
+                        Console.WriteLine("Specify Id:");
+                        int newMinifigureId = Int32.Parse(Console.ReadLine());
+                        Console.WriteLine("Specify Name:");
+                        string newMinifigureName = Console.ReadLine();
+                        Console.WriteLine("Specify Price:");
+                        int newMinifigurePrice = Int32.Parse(Console.ReadLine());
+                        Console.WriteLine("Specify Condition:");
+                        int newMinifigureCondition = Int32.Parse(Console.ReadLine());
+                        while (newMinifigureCondition < 0 || newMinifigureCondition > 10)
+                        {
+                            Console.WriteLine("Condition value must be in 0 to 10 range. Try again.");
+                            newMinifigureCondition = Int32.Parse(Console.ReadLine());
+                        }
+                        minifigure.AddItem(newMinifigureId, newMinifigureName, newMinifigurePrice, newMinifigureCondition);
+                     break;
+
+                    case 2:
+                        Console.WriteLine("Choose which minifigure you want to remove by its Id.");
+                        int chosenMinifigureId = Int32.Parse(Console.ReadLine());
+                        minifigure.RemoveItem(chosenMinifigureId);
+                     break;
+
+                    default:
+                        Console.WriteLine("You picked wrong number. Try again!");
+                     break;
                 }
-                else
-                {
-                    minifigure.RemoveItem();
-                }
+                
+            }
+            else if(menuOptionChosen == 2)
+            {
+
+            }
+            else if(menuOptionChosen == 3)
+            {
+
+            }
+            else if(menuOptionChosen == 4)
+            {
+
+            }
+            else
+            {
+                Console.WriteLine("You picked wrong number. Try again!");
             }
         }
     }

@@ -30,9 +30,15 @@ namespace LegoMinifigureHub
             Console.WriteLine($"Id - {newMinifigureId}, Name - {newMinifigureName}, Price - {newMinifigurePrice}, Condition - {newMinifigureCondition}/10");
         }
 
-        public void RemoveItem()
+        public void RemoveItem(int minifigureToRemoveId)
         {
-
+            for (int i = 0; i < listOfMinifigures.Count; i++)
+            {
+                if (listOfMinifigures[i].Id == minifigureToRemoveId)
+                {
+                    listOfMinifigures.RemoveAt(i);
+                }
+            }
         }
     }
 }
