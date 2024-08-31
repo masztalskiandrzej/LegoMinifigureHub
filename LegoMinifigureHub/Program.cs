@@ -8,9 +8,7 @@ namespace LegoMinifigureHub
         
         static void Main(string[] args)
         {
-            LogIn logIn = new LogIn();
-            Console.WriteLine("Welcome to Lego Minifigure Hub!");
-            logIn.LoggingIn();
+            
         }
     }
 }
