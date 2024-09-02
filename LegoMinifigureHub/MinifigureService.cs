@@ -9,7 +9,15 @@ namespace LegoMinifigureHub
 {
     public class MinifigureService
     {
+
         private List<Minifigure> minifiguresCollection;
+
+        public MinifigureService()
+        {
+            minifiguresCollection = new List<Minifigure>();
+        }
+
+
         public void AddMinifigureToCollection(int id, string name, double price, int type)
         {
             if (Enum.IsDefined(typeof(Minifigure.MinifigureType), type))
@@ -24,6 +32,16 @@ namespace LegoMinifigureHub
                 Console.WriteLine("Nieprawidłowy typ figurki");
             }
             
+        }
+
+        public List<Minifigure> GetMinifiguresCollection()
+        {
+            List<Minifigure> list = new List<Minifigure>();
+            foreach (var minifigure in minifiguresCollection)
+            {
+                list.Add(minifigure);
+            }
+            return list;
         }
     }
 }
