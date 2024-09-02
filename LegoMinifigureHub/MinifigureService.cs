@@ -11,20 +11,18 @@ namespace LegoMinifigureHub
     {
 
         private List<Minifigure> minifiguresCollection;
-
+        
         public MinifigureService()
         {
             minifiguresCollection = new List<Minifigure>();
         }
 
 
-        public void AddMinifigureToCollection(int id, string name, double price, int type)
+        public void AddMinifigureToCollection(int id, string name, double price, Minifigure.MinifigureType type)
         {
             if (Enum.IsDefined(typeof(Minifigure.MinifigureType), type))
             {
-                Minifigure.MinifigureType minifigureType = (Minifigure.MinifigureType)type;
-                Minifigure minifigure = new Minifigure() { Id = id, Name = name, Price = price, Type = minifigureType };
-
+                Minifigure minifigure = new Minifigure() { Id = id, Name = name, Price = price, Type = type};
                 minifiguresCollection.Add(minifigure);
             }
             else

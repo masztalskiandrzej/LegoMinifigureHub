@@ -39,9 +39,14 @@ namespace LegoMinifigureHub
                         Console.WriteLine("Define minifigure price in decimal:");
                         var givenPrice = Double.Parse(Console.ReadLine());
                         Console.WriteLine("Define minifigure type:");
-                        var givenType = Int32.Parse(Console.ReadLine());
+                        var givenTypeInput = Int32.Parse(Console.ReadLine());
+                        Minifigure.MinifigureType givenType = (Minifigure.MinifigureType)givenTypeInput;
 
+
+                        
                         minifigureService.AddMinifigureToCollection(givenId, givenName, givenPrice, givenType);
+                        FileService fileService = new FileService();
+                        fileService.WriteToFile($"{givenId} || {givenName} || {givenPrice} || {givenType}");
                         break;
                     case 2:
                         List<Minifigure> tempList = minifigureService.GetMinifiguresCollection();
@@ -49,6 +54,7 @@ namespace LegoMinifigureHub
                         for (int i = 0; i< tempList.Count;i++)
                         {
                             Console.WriteLine($"{tempList[i].Id} || {tempList[i].Name} || {tempList[i].Price} || {tempList[i].Type}");
+
                         }
                         
                         break;
