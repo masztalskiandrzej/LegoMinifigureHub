@@ -11,7 +11,7 @@ namespace LegoMinifigureHub
         public const string filePath = "C:\\Users\\Admin\\source\\repos\\LegoMinifigureHub\\LegoMinifigureHub\\MinifigureCollection.txt";
         public void WriteToFile(string minifigureToWrite)
         {
-            StreamWriter sw = new StreamWriter(filePath);
+            TextWriter sw = new StreamWriter(filePath, true);
 
             sw.WriteLine(minifigureToWrite);
 

@@ -17,6 +17,7 @@ namespace LegoMinifigureHub
             Console.WriteLine("Welcome to LEGO Minifigure Hub!");
             MinifigureService minifigureService = new MinifigureService();
             MenuActionService actionService = new MenuActionService();
+            
             actionService = InitializeMenu(actionService);
             while (true)
             {
@@ -49,13 +50,16 @@ namespace LegoMinifigureHub
                         fileService.WriteToFile($"{givenId} || {givenName} || {givenPrice} || {givenType}");
                         break;
                     case 2:
-                        List<Minifigure> tempList = minifigureService.GetMinifiguresCollection();
-                        Console.WriteLine("ID || Name || Price || Type");
-                        for (int i = 0; i< tempList.Count;i++)
-                        {
-                            Console.WriteLine($"{tempList[i].Id} || {tempList[i].Name} || {tempList[i].Price} || {tempList[i].Type}");
+                        //List<Minifigure> tempList = minifigureService.GetMinifiguresCollection();
+                        //Console.WriteLine("ID || Name || Price || Type");
+                        //for (int i = 0; i< tempList.Count;i++)
+                        //{
+                        //    Console.WriteLine($"{tempList[i].Id} || {tempList[i].Name} || {tempList[i].Price} || {tempList[i].Type}");
 
-                        }
+                        //}
+                        FileService fileServiceToRead = new FileService();
+                        Console.WriteLine("ID || Name || Price || Type");
+                        fileServiceToRead.ReadFromFile();
                         
                         break;
                     case 3:
@@ -65,7 +69,7 @@ namespace LegoMinifigureHub
 
                         break;
                     default:
-                        Console.WriteLine("Wybrano niepoprawną opcję, spróbuj ponownie!");
+                        Console.WriteLine("Wrong option, try again!");
                         break;
                 }
 
