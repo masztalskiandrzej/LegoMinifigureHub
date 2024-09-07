@@ -9,14 +9,19 @@ namespace LegoMinifigureHub
     public class FileService
     {
         public const string filePath = "C:\\Users\\Admin\\source\\repos\\LegoMinifigureHub\\LegoMinifigureHub\\MinifigureCollection.txt";
-        public void WriteToFile(string minifigureToWrite)
+
+        public string GetFilePath {  get { return filePath; } }
+        public void WriteMinifigureToFile(Minifigure minifigureToWrite)
         {
             TextWriter sw = new StreamWriter(filePath, true);
 
-            sw.WriteLine(minifigureToWrite);
+            sw.WriteLine($"{minifigureToWrite.Id} || {minifigureToWrite.Name} || {minifigureToWrite.Price} || {minifigureToWrite.Type}");
 
             sw.Close();
         }
+
+        
+
 
         public void ReadFromFile()
         {
@@ -33,15 +38,11 @@ namespace LegoMinifigureHub
                     line = sr.ReadLine();
                 }
                 sr.Close();
-                Console.ReadLine();
+                //Console.ReadLine();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                Console.WriteLine("Nie można otworzyć pliku!");
             }
             
 

@@ -1,2 +1,1 @@
-615 || Asajj Ventress || 134,37 || Sith
-1 || Gree || 190,46 || Clone
+2 || Rex || 360 || Clone

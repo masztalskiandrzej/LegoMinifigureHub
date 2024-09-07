@@ -11,10 +11,21 @@ namespace LegoMinifigureHub
     {
 
         private List<Minifigure> minifiguresCollection;
-        
+        FileService fileService = new FileService();
         public MinifigureService()
         {
             minifiguresCollection = new List<Minifigure>();
+        }
+
+        public void UpdateFile()
+        {
+            string path = fileService.GetFilePath;
+            File.WriteAllText(path, string.Empty);
+
+            for(int i = 0; i < minifiguresCollection.Count; i++) 
+            {
+                fileService.WriteMinifigureToFile(minifiguresCollection[i]);
+            }
         }
 
 
@@ -24,6 +35,8 @@ namespace LegoMinifigureHub
             {
                 Minifigure minifigure = new Minifigure() { Id = id, Name = name, Price = price, Type = type};
                 minifiguresCollection.Add(minifigure);
+                FileService file = new FileService();
+                file.WriteMinifigureToFile(minifigure);
             }
             else
             {
@@ -40,6 +53,17 @@ namespace LegoMinifigureHub
                 list.Add(minifigure);
             }
             return list;
+        }
+
+        public void RemoveMinifigureFromCollection(string figureToRemove)
+        {
+            for (int i = 0; i < minifiguresCollection.Count; i++)
+            {
+                if (minifiguresCollection[i].Name.Equals(figureToRemove))
+                {
+                    minifiguresCollection.Remove(minifiguresCollection[i]);
+                }
+            }
         }
     }
 }

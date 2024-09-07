@@ -9,7 +9,6 @@ namespace LegoMinifigureHub
         static void Main(string[] args)
         {
             
-            //b. Wyświetl swoją kolekcję
             //c. Usuń minifigurkę ze swojej kolekcji
             //d. Wyszukaj minifigurkę po nazwie
 
@@ -43,11 +42,9 @@ namespace LegoMinifigureHub
                         var givenTypeInput = Int32.Parse(Console.ReadLine());
                         Minifigure.MinifigureType givenType = (Minifigure.MinifigureType)givenTypeInput;
 
-
+                       
                         
                         minifigureService.AddMinifigureToCollection(givenId, givenName, givenPrice, givenType);
-                        FileService fileService = new FileService();
-                        fileService.WriteToFile($"{givenId} || {givenName} || {givenPrice} || {givenType}");
                         break;
                     case 2:
                         //List<Minifigure> tempList = minifigureService.GetMinifiguresCollection();
@@ -63,6 +60,17 @@ namespace LegoMinifigureHub
                         
                         break;
                     case 3:
+                        FileService fileToReadBeforeDeletingFigure = new FileService();
+                        fileToReadBeforeDeletingFigure.ReadFromFile();
+                        Console.WriteLine("Choose a minifigure to delete from your collection by its name: ");
+                        string figureToDelete = Console.ReadLine();
+                        minifigureService.RemoveMinifigureFromCollection(figureToDelete);
+                        List<Minifigure> temp = minifigureService.GetMinifiguresCollection();
+                        for (int i = 0; i < temp.Count; i++)
+                        {
+                            Console.WriteLine($"{temp[i].Name}");
+                        }
+                        minifigureService.UpdateFile();
 
                         break;
                     case 4:
