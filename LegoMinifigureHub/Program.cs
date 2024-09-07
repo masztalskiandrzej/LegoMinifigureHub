@@ -62,6 +62,7 @@ namespace LegoMinifigureHub
                     case 3:
                         FileService fileToReadBeforeDeletingFigure = new FileService();
                         fileToReadBeforeDeletingFigure.ReadFromFile();
+                        Console.WriteLine();
                         Console.WriteLine("Choose a minifigure to delete from your collection by its name: ");
                         string figureToDelete = Console.ReadLine();
                         minifigureService.RemoveMinifigureFromCollection(figureToDelete);
