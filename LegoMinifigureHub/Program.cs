@@ -37,7 +37,7 @@ namespace LegoMinifigureHub
                         var givenName = Console.ReadLine();
                         Console.WriteLine("Define minifigure price in decimal:");
                         var givenPrice = Double.Parse(Console.ReadLine());
-                        Console.WriteLine("Define minifigure type:");
+                        Console.WriteLine("Define minifigure type by number (1 => Clone, 2 => Sith, 3 => Jedi):");
                         var givenTypeInput = Int32.Parse(Console.ReadLine());
                         Minifigure.MinifigureType givenType = (Minifigure.MinifigureType)givenTypeInput;
 
