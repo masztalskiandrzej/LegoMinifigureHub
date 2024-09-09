@@ -8,8 +8,6 @@ namespace LegoMinifigureHub
         
         static void Main(string[] args)
         {
-            
-            //c. Usuń minifigurkę ze swojej kolekcji
             //d. Wyszukaj minifigurkę po nazwie
 
 
@@ -18,6 +16,7 @@ namespace LegoMinifigureHub
             MenuActionService actionService = new MenuActionService();
             
             actionService = InitializeMenu(actionService);
+            minifigureService.PopulateMinifigureList();
             while (true)
             {
                 Console.WriteLine("Choose an operation you want to perform:");
@@ -45,6 +44,7 @@ namespace LegoMinifigureHub
                        
                         
                         minifigureService.AddMinifigureToCollection(givenId, givenName, givenPrice, givenType);
+                        minifigureService.UpdateFile();
                         break;
                     case 2:
                         //List<Minifigure> tempList = minifigureService.GetMinifiguresCollection();
@@ -66,15 +66,15 @@ namespace LegoMinifigureHub
                         string figureToDelete = Console.ReadLine();
                         minifigureService.RemoveMinifigureFromCollection(figureToDelete);
                         List<Minifigure> temp = minifigureService.GetMinifiguresCollection();
-                        for (int i = 0; i < temp.Count; i++)
-                        {
-                            Console.WriteLine($"{temp[i].Name}");
-                        }
                         minifigureService.UpdateFile();
 
                         break;
                     case 4:
-
+                        Console.WriteLine("Please type name of minifigure in your collection you wish to search for: ");
+                        string writtenName = Console.ReadLine();
+                        var returnedMinifigure = minifigureService.SearchForMinifigureByName(writtenName);
+                        Console.WriteLine($"{returnedMinifigure.Id} [] {returnedMinifigure.Name} [] {returnedMinifigure.Price} [] {returnedMinifigure.Type}");
+                        Console.WriteLine();
                         break;
                     default:
                         Console.WriteLine("Wrong option, try again!");

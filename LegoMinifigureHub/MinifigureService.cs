@@ -17,6 +17,42 @@ namespace LegoMinifigureHub
             minifiguresCollection = new List<Minifigure>();
         }
 
+        public void PopulateMinifigureList()
+        {
+            var tempFile = fileService.GetFilePath;
+            string[] lines = File.ReadAllLines(tempFile);
+
+            foreach(var line in lines)
+            {
+                string[] data = line.Split(" || ");
+
+                if(data.Length == 4)
+                {
+                    int id = int.Parse(data[0]);
+                    string name = data[1];
+                    double price = double.Parse(data[2]);
+                    Minifigure.MinifigureType type = 0;
+                    if (data[3] == "Clone")
+                    {
+                        type = MinifigureType.Clone;
+                    }
+                    else if(data[3] == "Sith")
+                    {
+                        type = MinifigureType.Sith;
+                    }
+                    else if (data[3] == "Jedi")
+                    {
+                        type = MinifigureType.Jedi;
+                    }
+
+                    
+
+                    Minifigure minifigure = new Minifigure() {Id = id, Name = name, Price = price, Type = type };
+                    minifiguresCollection.Add(minifigure);
+                }
+            }
+        }
+
         public void UpdateFile()
         {
             string path = fileService.GetFilePath;
@@ -35,8 +71,6 @@ namespace LegoMinifigureHub
             {
                 Minifigure minifigure = new Minifigure() { Id = id, Name = name, Price = price, Type = type};
                 minifiguresCollection.Add(minifigure);
-                FileService file = new FileService();
-                file.WriteMinifigureToFile(minifigure);
             }
             else
             {
@@ -64,6 +98,28 @@ namespace LegoMinifigureHub
                     minifiguresCollection.Remove(minifiguresCollection[i]);
                 }
             }
+        }
+
+        public Minifigure SearchForMinifigureByName(string name) 
+        {
+            Minifigure minifigure = new Minifigure();
+            bool found = false;
+            foreach(var minifig in minifiguresCollection)
+            {
+                if (minifig.Name.Equals(name))
+                {
+                    minifigure = minifig;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                Console.WriteLine("There is no figure with such name in your collection!");
+            }
+
+            return minifigure;
         }
     }
 }
