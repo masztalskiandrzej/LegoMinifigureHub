@@ -8,7 +8,7 @@ namespace LegoMinifigureHub
 {
     public class FileService
     {
-        public const string filePath = "C:\\Users\\Admin\\source\\repos\\LegoMinifigureHub\\LegoMinifigureHub\\MinifigureCollection.txt";
+        private const string filePath = "C:\\Users\\Admin\\source\\repos\\LegoMinifigureHub\\LegoMinifigureHub\\MinifigureCollection.txt";
 
         public string GetFilePath {  get { return filePath; } }
         public void WriteMinifigureToFile(Minifigure minifigureToWrite)

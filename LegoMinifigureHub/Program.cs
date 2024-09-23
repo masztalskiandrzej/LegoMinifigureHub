@@ -8,14 +8,14 @@ namespace LegoMinifigureHub
         
         static void Main(string[] args)
         {
-            //d. Wyszukaj minifigurkę po nazwie
+            
 
-
-            Console.WriteLine("Welcome to LEGO Minifigure Hub!");
+            MarvelMinifigureService marvelMinifigureService = new MarvelMinifigureService();
             MinifigureService minifigureService = new MinifigureService();
             MenuActionService actionService = new MenuActionService();
             
             actionService = InitializeMenu(actionService);
+            marvelMinifigureService.PopulateMinifigureList();
             minifigureService.PopulateMinifigureList();
             while (true)
             {
