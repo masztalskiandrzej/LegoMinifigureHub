@@ -26,12 +26,13 @@ namespace LegoMinifigureHub
             {
                 string[] data = line.Split(" || ");
 
-                if(data.Length == 4)
+                if(data.Length == 5)
                 {
                     int id = int.Parse(data[0]);
                     string name = data[1];
                     double price = double.Parse(data[2]);
                     Minifigure.MinifigureType type = 0;
+                    string theme = data[4];
                     if (data[3] == "Clone")
                     {
                         type = MinifigureType.Clone;
@@ -47,7 +48,7 @@ namespace LegoMinifigureHub
 
                     
 
-                    Minifigure minifigure = new Minifigure() {Id = id, Name = name, Price = price, Type = type };
+                    Minifigure minifigure = new Minifigure() {Id = id, Name = name, Price = price, Type = type, Theme = theme };
                     minifiguresCollection.Add(minifigure);
                 }
             }

@@ -9,8 +9,12 @@ namespace LegoMinifigureHub
     public class FileService
     {
         private const string filePath = "C:\\Users\\Admin\\source\\repos\\LegoMinifigureHub\\LegoMinifigureHub\\MinifigureCollection.txt";
+        private const string starWarsFilePath = "C:\\Users\\Admin\\source\\repos\\LegoMinifigureHub\\LegoMinifigureHub\\StarWarsMinifigureCollection.txt";
+        private const string marvelFilePath = "C:\\Users\\Admin\\source\\repos\\LegoMinifigureHub\\LegoMinifigureHub\\MarvelMinifigureCollection.txt";
 
         public string GetFilePath {  get { return filePath; } }
+        public string GetStarWarsFilePath {  get { return starWarsFilePath; } }
+        public string GetMarvelFilePath {  get { return marvelFilePath; } }
         public void WriteMinifigureToFile(Minifigure minifigureToWrite)
         {
             TextWriter sw = new StreamWriter(filePath, true);
@@ -20,7 +24,10 @@ namespace LegoMinifigureHub
             sw.Close();
         }
 
-        
+        public void CombineFiles()
+        {
+
+        }
 
 
         public void ReadFromFile()

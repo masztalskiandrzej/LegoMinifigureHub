@@ -11,6 +11,8 @@ namespace LegoMinifigureHub
         public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
+        public string Theme { get; set; }
+
         public MinifigureType Type { get; set; }
         public enum MinifigureType
         {
@@ -19,6 +21,6 @@ namespace LegoMinifigureHub
             Jedi = 3
         }
 
-        
+
     }
 }

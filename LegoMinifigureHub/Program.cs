@@ -10,12 +10,10 @@ namespace LegoMinifigureHub
         {
             
 
-            MarvelMinifigureService marvelMinifigureService = new MarvelMinifigureService();
             MinifigureService minifigureService = new MinifigureService();
             MenuActionService actionService = new MenuActionService();
             
             actionService = InitializeMenu(actionService);
-            marvelMinifigureService.PopulateMinifigureList();
             minifigureService.PopulateMinifigureList();
             while (true)
             {

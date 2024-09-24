@@ -1,0 +1,4 @@
+5 || Iron Man || 50 || Avenger || Marvel
+6 || Black Widow || 360 || Avenger || Marvel
+7 || Thor || 200 || Avenger || Marvel
+7 || Thanos || 200 || Other || Marvel

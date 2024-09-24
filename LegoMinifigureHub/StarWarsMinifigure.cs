@@ -8,8 +8,8 @@ namespace LegoMinifigureHub
 {
     public class StarWarsMinifigure : Minifigure
     {
-        public MinifigureType CharacterType { get; set; }
-        public enum MinifigureType
+        public SWMinifigureType Type { get; set; }
+        public enum SWMinifigureType
         {
             Clone = 1,
             Sith = 2,

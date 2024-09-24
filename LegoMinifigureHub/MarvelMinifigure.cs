@@ -8,12 +8,11 @@ namespace LegoMinifigureHub
 {
     public class MarvelMinifigure : Minifigure
     {
-        public MinifigureType Type { get; set; }
-        public enum MinifigureType
+        public MMinifigureType Type { get; set; }
+        public enum MMinifigureType
         {
             Avenger = 1,
-            Titan = 2,
-            Alien = 3
+            Other = 2
         }
     }
 }
