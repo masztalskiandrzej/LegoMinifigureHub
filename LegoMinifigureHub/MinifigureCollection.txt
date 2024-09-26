@@ -1,3 +1,7 @@
-1 || Vader || 50 || Sith
-2 || Rex || 360 || Clone
-4 || Commander Gree || 200 || Clone
+1 || Vader || 50 || StarWars
+2 || Rex || 360 || StarWars
+4 || Commander Gree || 200 || StarWars
+5 || Iron Man || 50 || Marvel
+7 || Thor || 200 || Marvel
+8 || Thanos || 200 || Marvel
+34 || Ahsoka || 40 || StarWars

@@ -8,17 +8,17 @@ namespace LegoMinifigureHub
 {
     public class Minifigure
     {
+
+       
         public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
-        public string Theme { get; set; }
 
-        public MinifigureType Type { get; set; }
-        public enum MinifigureType
+        public MinifigureTheme Theme { get; set; }
+        public enum MinifigureTheme
         {
-            Clone = 1,
-            Sith = 2,
-            Jedi = 3
+            StarWars = 1,
+            Marvel = 2
         }
 
 

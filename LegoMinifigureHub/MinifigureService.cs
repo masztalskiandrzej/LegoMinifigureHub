@@ -17,42 +17,34 @@ namespace LegoMinifigureHub
             minifiguresCollection = new List<Minifigure>();
         }
 
-        public void PopulateMinifigureList()
+        
+
+        public void PopulateStarWarsMinifigureList()
         {
             var tempFile = fileService.GetFilePath;
             string[] lines = File.ReadAllLines(tempFile);
 
-            foreach(var line in lines)
+            foreach (var line in lines)
             {
                 string[] data = line.Split(" || ");
 
-                if(data.Length == 5)
+                if (data.Length == 4)
                 {
                     int id = int.Parse(data[0]);
                     string name = data[1];
                     double price = double.Parse(data[2]);
-                    Minifigure.MinifigureType type = 0;
-                    string theme = data[4];
-                    if (data[3] == "Clone")
-                    {
-                        type = MinifigureType.Clone;
-                    }
-                    else if(data[3] == "Sith")
-                    {
-                        type = MinifigureType.Sith;
-                    }
-                    else if (data[3] == "Jedi")
-                    {
-                        type = MinifigureType.Jedi;
-                    }
+                    Minifigure.MinifigureTheme theme = (Minifigure.MinifigureTheme)Enum.Parse(typeof(Minifigure.MinifigureTheme), data[3]);
 
-                    
 
-                    Minifigure minifigure = new Minifigure() {Id = id, Name = name, Price = price, Type = type, Theme = theme };
+                    Minifigure minifigure = new Minifigure() { Id = id, Name = name, Price = price, Theme = theme};
                     minifiguresCollection.Add(minifigure);
+
+
                 }
             }
         }
+
+
 
         public void UpdateFile()
         {
@@ -66,16 +58,16 @@ namespace LegoMinifigureHub
         }
 
 
-        public void AddMinifigureToCollection(int id, string name, double price, Minifigure.MinifigureType type)
+        public void AddMinifigureToCollection(int id, string name, double price, Minifigure.MinifigureTheme theme)
         {
-            if (Enum.IsDefined(typeof(Minifigure.MinifigureType), type))
+            if (Enum.IsDefined(typeof(Minifigure.MinifigureTheme), theme))
             {
-                Minifigure minifigure = new Minifigure() { Id = id, Name = name, Price = price, Type = type};
+                Minifigure minifigure = new Minifigure() { Id = id, Name = name, Price = price, Theme = theme};
                 minifiguresCollection.Add(minifigure);
             }
             else
             {
-                Console.WriteLine("Nieprawidłowy typ figurki");
+                Console.WriteLine("Invalid minifigure theme");
             }
             
         }
@@ -121,6 +113,40 @@ namespace LegoMinifigureHub
             }
 
             return minifigure;
+        }
+
+
+        public void ReadFromFileByTheme(string givenTheme)
+        {
+            var tempFile = fileService.GetFilePath;
+            string[] lines = File.ReadAllLines(tempFile);
+
+            foreach (var line in lines)
+            {
+                string[] data = line.Split(" || ");
+
+                if (givenTheme == "StarWars" && data[3] == givenTheme)
+                {
+
+                    int id = int.Parse(data[0]);
+                    string name = data[1];
+                    double price = double.Parse(data[2]);
+                    Minifigure.MinifigureTheme theme = (Minifigure.MinifigureTheme)Enum.Parse(typeof(Minifigure.MinifigureTheme), data[3]);
+
+                    Minifigure minifigure = new Minifigure() { Id = id, Name = name, Price = price, Theme = theme };
+                    Console.WriteLine($"{minifigure.Id} || {minifigure.Name} || {minifigure.Price} || {minifigure.Theme}");
+                }
+                else if (givenTheme == "Marvel" && data[3] == givenTheme)
+                {
+                    int id = int.Parse(data[0]);
+                    string name = data[1];
+                    double price = double.Parse(data[2]);
+                    Minifigure.MinifigureTheme theme = (Minifigure.MinifigureTheme)Enum.Parse(typeof(Minifigure.MinifigureTheme), data[3]);
+
+                    Minifigure minifigure = new Minifigure() { Id = id, Name = name, Price = price, Theme = theme };
+                    Console.WriteLine($"{minifigure.Id} || {minifigure.Name} || {minifigure.Price} || {minifigure.Theme}");
+                }
+            }
         }
     }
 }

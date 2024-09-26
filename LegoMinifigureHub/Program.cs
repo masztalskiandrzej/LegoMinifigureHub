@@ -14,7 +14,7 @@ namespace LegoMinifigureHub
             MenuActionService actionService = new MenuActionService();
             
             actionService = InitializeMenu(actionService);
-            minifigureService.PopulateMinifigureList();
+            minifigureService.PopulateStarWarsMinifigureList();
             while (true)
             {
                 Console.WriteLine("Choose an operation you want to perform:");
@@ -35,13 +35,13 @@ namespace LegoMinifigureHub
                         var givenName = Console.ReadLine();
                         Console.WriteLine("Define minifigure price in decimal:");
                         var givenPrice = Double.Parse(Console.ReadLine());
-                        Console.WriteLine("Define minifigure type by number (1 => Clone, 2 => Sith, 3 => Jedi):");
-                        var givenTypeInput = Int32.Parse(Console.ReadLine());
-                        Minifigure.MinifigureType givenType = (Minifigure.MinifigureType)givenTypeInput;
+                        Console.WriteLine("Define minifigure theme by number (1 => StarWars, 2 => Marvel):");
+                        var givenThemeInput = Int32.Parse(Console.ReadLine());
+                        Minifigure.MinifigureTheme givenTheme = (Minifigure.MinifigureTheme)givenThemeInput;
 
                        
                         
-                        minifigureService.AddMinifigureToCollection(givenId, givenName, givenPrice, givenType);
+                        minifigureService.AddMinifigureToCollection(givenId, givenName, givenPrice, givenTheme);
                         minifigureService.UpdateFile();
                         break;
                     case 2:
@@ -53,7 +53,7 @@ namespace LegoMinifigureHub
 
                         //}
                         FileService fileServiceToRead = new FileService();
-                        Console.WriteLine("ID || Name || Price || Type");
+                        Console.WriteLine("ID || Name || Price || Theme");
                         fileServiceToRead.ReadFromFile();
                         
                         break;
@@ -71,8 +71,13 @@ namespace LegoMinifigureHub
                         Console.WriteLine("Please type name of minifigure in your collection you wish to search for: ");
                         string writtenName = Console.ReadLine();
                         var returnedMinifigure = minifigureService.SearchForMinifigureByName(writtenName);
-                        Console.WriteLine($"{returnedMinifigure.Id} [] {returnedMinifigure.Name} [] {returnedMinifigure.Price} [] {returnedMinifigure.Type}");
+                        Console.WriteLine($"{returnedMinifigure.Id} [] {returnedMinifigure.Name} [] {returnedMinifigure.Price} [] {returnedMinifigure.Theme}");
                         Console.WriteLine();
+                        break;
+                        case 5:
+                        Console.WriteLine("Minifigures from which theme you wish to see: ");
+                        var chosenTheme = Console.ReadLine();
+                        minifigureService.ReadFromFileByTheme(chosenTheme);
                         break;
                     default:
                         Console.WriteLine("Wrong option, try again!");
@@ -88,6 +93,7 @@ namespace LegoMinifigureHub
             menuActionService.AddMenuAction(2, "Show my collection", "MainMenu");
             menuActionService.AddMenuAction(3, "Remove existing minifigure", "MainMenu");
             menuActionService.AddMenuAction(4, "Search for minifigure details", "MainMenu");
+            menuActionService.AddMenuAction(5, "Search minifigures by theme", "MainMenu");
             return menuActionService;
         }
     }
