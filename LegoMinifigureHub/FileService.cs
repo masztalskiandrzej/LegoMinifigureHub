@@ -9,8 +9,11 @@ namespace LegoMinifigureHub
     public class FileService
     {
         private const string filePath = "C:\\Users\\Admin\\source\\repos\\LegoMinifigureHub\\LegoMinifigureHub\\MinifigureCollection.txt";
+        private const string accountsFilePath = "C:\\Users\\Admin\\source\\repos\\LegoMinifigureHub\\LegoMinifigureHub\\UserList.txt";
+
 
         public string GetFilePath {  get { return filePath; } }
+        public string GetUserListFilePath {  get { return accountsFilePath; } }
         public void WriteMinifigureToFile(Minifigure minifigureToWrite)
         {
             TextWriter sw = new StreamWriter(filePath, true);
@@ -20,9 +23,13 @@ namespace LegoMinifigureHub
             sw.Close();
         }
 
-        public void CombineFiles()
+        public void WriteUserToFile(User userToWrite)
         {
+            TextWriter sw = new StreamWriter(accountsFilePath, true);
 
+            sw.WriteLine($"{userToWrite.Username} || {userToWrite.Password}");
+
+            sw.Close();
         }
 
 

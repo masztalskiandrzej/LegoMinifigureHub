@@ -19,7 +19,7 @@ namespace LegoMinifigureHub
 
         
 
-        public void PopulateStarWarsMinifigureList()
+        public void PopulateMinifigureList()
         {
             var tempFile = fileService.GetFilePath;
             string[] lines = File.ReadAllLines(tempFile);
@@ -30,7 +30,7 @@ namespace LegoMinifigureHub
 
                 if (data.Length == 4)
                 {
-                    int id = int.Parse(data[0]);
+                    int id = Int32.Parse(data[0]);
                     string name = data[1];
                     double price = double.Parse(data[2]);
                     Minifigure.MinifigureTheme theme = (Minifigure.MinifigureTheme)Enum.Parse(typeof(Minifigure.MinifigureTheme), data[3]);

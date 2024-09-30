@@ -8,7 +8,7 @@ namespace LegoMinifigureHub
 {
     public class User
     {
-        public string username;
-        public string password;
+        public string Username;
+        public string Password;
     }
 }
