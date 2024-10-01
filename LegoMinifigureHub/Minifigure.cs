@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace LegoMinifigureHub
 {
-    public class Minifigure
+
+
+    public class Minifigure : IMinifigure
     {
 
-       
+
         public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
