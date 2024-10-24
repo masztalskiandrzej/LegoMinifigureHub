@@ -7,6 +7,26 @@ using static LegoMinifigureHub.Minifigure;
 
 namespace LegoMinifigureHub
 {
+
+    public class GenericService<T> where T : class
+    {
+        public List<T> Items { get; set; }
+
+        public GenericService()
+        {
+            Items = new List<T>();
+        }
+
+        public List<T> GetAll()
+        {
+            return Items;
+        }
+
+        public void Add(T obj)
+        {
+            Items.Add(obj); 
+        }
+    }
     public class MinifigureService
     {
 
