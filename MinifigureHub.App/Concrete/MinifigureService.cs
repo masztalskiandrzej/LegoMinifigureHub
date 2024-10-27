@@ -1,33 +1,15 @@
-﻿using System;
+﻿using LegoMinifigureHub.Domain.Entity;
+using MinifigureHub.App.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static LegoMinifigureHub.Minifigure;
 
-namespace LegoMinifigureHub
+namespace LegoMinifigureHub.App
 {
-
-    public class GenericService<T> where T : class
-    {
-        public List<T> Items { get; set; }
-
-        public GenericService()
-        {
-            Items = new List<T>();
-        }
-
-        public List<T> GetAll()
-        {
-            return Items;
-        }
-
-        public void Add(T obj)
-        {
-            Items.Add(obj); 
-        }
-    }
-    public class MinifigureService
+    public class MinifigureService : BaseService<Minifigure>
     {
 
         private List<Minifigure> minifiguresCollection;
